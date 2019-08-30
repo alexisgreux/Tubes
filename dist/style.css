@@ -40,3 +40,12 @@ a:hover {
   color: #fff;
   border-bottom-color: rgba(255, 255, 255, 0.7);
 }
+
+.square
+{
+  width: auto;
+  position:absolute;
+  margin-left:3%;
+  top:3%;
+  box-shadow: 5px 5px 5px  #33333350;
+}

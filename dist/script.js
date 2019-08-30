@@ -8,7 +8,7 @@ function App(conf) {
     tubeRadius: 3,
     resY: 10,
     resX: 2,
-    noiseCoef: 50,
+    noiseCoef: 30,
     timeCoef: 50,
     mouseCoef: 50,
     heightCoef: 20,
