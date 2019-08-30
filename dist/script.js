@@ -49,24 +49,7 @@ function App(conf) {
     });
 
     initScene();
-    initGui();
     animate();
-  }
-
-  function initGui() {
-    // noiseInput.value = 101 - conf.xyCoef;
-    // heightInput.value = (conf.zCoef * 100) / 25;
-
-    // noiseInput.addEventListener('input', e => {
-    //   conf.noiseCoef = 101 - noiseInput.value;
-    // });
-    // heightInput.addEventListener('input', e => {
-    //   conf.zCoef = (heightInput.value * 25) / 100;
-    // });
-
-    document.body.addEventListener('click', e => {
-      updateColors();
-    });
   }
 
   function initScene() {
