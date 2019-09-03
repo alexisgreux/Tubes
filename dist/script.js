@@ -3,7 +3,7 @@ const simplex = new SimplexNoise();
 function App(conf) {
   conf = {
     fov: 80,
-    cameraZ: 130,
+    cameraZ: 20,
     background: 0x000000,
     tubeRadius: 3,
     resY: 10,
@@ -14,10 +14,10 @@ function App(conf) {
     heightCoef: 20,
     ambientColor: 0xcccccc,
     lightIntensity: 1,
-    light1Color: 0xff0000,
-    light2Color: 0xb30000,
-    light3Color: 0xffbfbf,
-    light4Color: 0xff8080,
+    light1Color: 0xd90c1b,
+    light2Color: 0xa61b26,
+    light3Color: 0xffffff,
+    light4Color: 0xf20306,
     ...conf };
 
 
@@ -58,13 +58,13 @@ function App(conf) {
     initLights();
     initObjects();
 
-    // camera.position.z = 130;
+    camera.position.z = 130;
   }
 
   function initLights() {
     scene.add(new THREE.AmbientLight(conf.ambientColor));
 
-    const z = 50;
+    const z = 20;
     const lightDistance = 500;
     light1 = new THREE.PointLight(conf.light1Color, conf.lightIntensity, lightDistance);
     light1.position.set(0, wHeight / 2, z);
@@ -105,18 +105,18 @@ function App(conf) {
     noiseConf.mouse = mouse.x + mouse.y;
   }
 
-  function updateColors() {
-    const color = chroma.random();
-    updateCScale(color);
-    for (let i = 0; i < objects.length; i++) {
-      objects[i].material.color = new THREE.Color(cscale(TMath.randFloat(0, 1)).hex());
-    }
-    light1.color = new THREE.Color(chroma.random().hex());
-    light2.color = new THREE.Color(chroma.random().hex());
-    light3.color = new THREE.Color(chroma.random().hex());
-    light4.color = new THREE.Color(chroma.random().hex());
-    console.log(light1.color, light2.color, light3.color, light4.color);
-  }
+  // function updateColors() {
+  //   const color = chroma.random();
+  //   updateCScale(color);
+  //   for (let i = 0; i < objects.length; i++) {
+  //     objects[i].material.color = new THREE.Color(cscale(TMath.randFloat(0, 1)).hex());
+  //   }
+  //   light1.color = new THREE.Color(chroma.random().hex());
+  //   light2.color = new THREE.Color(chroma.random().hex());
+  //   light3.color = new THREE.Color(chroma.random().hex());
+  //   light4.color = new THREE.Color(chroma.random().hex());
+  //   console.log(light1.color, light2.color, light3.color, light4.color);
+  // }
 
   function updateCScale(color) {
     const colors = [
@@ -174,14 +174,14 @@ function App(conf) {
       camera.updateProjectionMatrix();
       const wsize = getRendererSize();
       wWidth = wsize[0];
-      wHeight = wsize[1];
+      wHeight = wsize[1]/2.5;
     }
   }
 
   function getRendererSize() {
     const cam = new THREE.PerspectiveCamera(camera.fov, camera.aspect);
     const vFOV = cam.fov * Math.PI / 180;
-    // const height = 2 * Math.tan(vFOV / 2) * Math.abs(conf.cameraZ);
+    // const height = 5 * Math.tan(vFOV / 2) * Math.abs(conf.cameraZ);
     // const height = 2 * Math.tan(vFOV / 2) * Math.abs(conf.cameraZ);
     const width = height * cam.aspect;
     return [width, height];
